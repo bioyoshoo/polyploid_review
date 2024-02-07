@@ -1,0 +1,29 @@
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/camara/genome.fa.bz2
+  description: "Genome sequence of Cardamine amara from Sun"
+  output: ../../data/genome/camara/camara_genome.fa.bz2
+  download_date: "2024-02-06"
+
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/camara/genome.gff.bz2
+  description: "Genome annotation of Cardamine amara from Sun"
+  output: ../../data/genome/camara/camara_genome.gff.bz2
+  download_date: "2024-02-06"
+
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/camara/genome.modified.gff.bz2
+  description: "Modified genome annotation of Cardamine amara from Sun"
+  output: ../../data/genome/camara/camara_genome.modified.gff.bz2
+  download_date: "2024-02-06"
+
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/crivularis/genome.fa.bz2
+  description: "Genome sequence of Cardamine rivularis from Sun"
+  output: ../../data/genome/crivlaris/crivularis_genome.fa.bz2
+  download_date: "2024-02-06"
+
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/crivularis/genome.gff.bz2
+  description: "Genome annotation of Cardamine rivularis from Sun"
+  download_date: "2024-02-06"
+  output: ../../data/genome/crivlaris/crivularis_genome.gff.bz2
+
+- url: https://github.com/jsun/suppl/raw/master/10.3389/fgene.2020.567262/data/genome_leaf/crivularis/genome.modified.gff.bz2
+  description: "Modified genome annotation of Crivularis from Sun"
+  download_date: "2024-02-06"
+  output: ../../data/genome/crivlaris/crivularis_genome.modified.gff.bz2
