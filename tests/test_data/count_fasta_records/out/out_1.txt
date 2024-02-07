@@ -1,0 +1,3 @@
+NSCAFA.765      3
+Chr1    10
+Chr2    8
