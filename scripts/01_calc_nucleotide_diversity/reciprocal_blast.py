@@ -90,7 +90,7 @@ def tblastx(in_fasta: str, in_db: str, out: str, n_threads: int) -> None:
                  "-out", out,
                  "-num_threads", f"{n_threads}",
                  "-outfmt", "6",
-                 "-evalue", "1e-5",
+                 "-evalue", "1e-10",
                  "-max_target_seqs", "1"],
                  text=True, stdout=f)
     return None
@@ -109,7 +109,7 @@ def blastn(in_fasta: str, in_db: str, out: str, n_threads: int) -> None:
                  "-out", out,
                  "-num_threads", f"{n_threads}",
                  "-outfmt", "6",
-                 "-evalue", "1e-5",
+                 "-evalue", "1e-10",
                  "-max_target_seqs", "1"],
                  text=True, stdout=f)
     return None

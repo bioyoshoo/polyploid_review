@@ -15,5 +15,5 @@ do
                                --in_db_B "${GE_DIR}/crivularis/db/crivularis.cds.db" \
                                --out_dir "${DATA_DIR}/blast_result" \
                                --type "$type" \
-                               --n_threads 16
+                               --n_threads 24
 done
