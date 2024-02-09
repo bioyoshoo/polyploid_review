@@ -1,4 +1,5 @@
 #%%
+import numpy as np
 import pandas as pd
 import argparse
 import warnings
@@ -106,11 +107,15 @@ def main():
     df_ba = df_ba.drop_duplicates(subset='qseqid', keep='first')
 
     df_concat = pd.concat([df_ab, df_ba], axis=0)
-    divergence1 = df_concat['pident'].mean().round(3)
+    divergence1 = np.average(df_concat['pident'].values, 
+                             weights=df_concat['length'].values).round(3)
 
     df_merge = rec_best_hit_df(df_ab, df_ba, args.name_A, args.name_B)
-    divergence2 = df_merge[[f"pident_{args.name_A}_vs_{args.name_B}", 
-                            f"pident_{args.name_B}_vs_{args.name_A}"]].mean().mean().round(3)
+    d_ab = np.average(df_merge[f"pident_{args.name_A}_vs_{args.name_B}"],
+                    weights=df_merge[f"length_{args.name_A}_vs_{args.name_B}"])
+    d_ba = np.average(df_merge[f"pident_{args.name_B}_vs_{args.name_A}"],
+                    weights=df_merge[f"length_{args.name_B}_vs_{args.name_A}"])
+    divergence2 = np.mean([d_ab, d_ba]).round(3)
 
     # output result
     with open(args.out_summary, 'w') as f:
