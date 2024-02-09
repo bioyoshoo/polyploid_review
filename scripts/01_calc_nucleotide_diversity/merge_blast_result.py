@@ -96,8 +96,14 @@ def main():
     # even in case of max_target_seqs is set to 1, 
     # multiple results in the same hit cds are included in blast result
     # make sure to select only one best hit for each query
-    df_ab = df_ab.loc[df_ab.groupby('qseqid')['pident'].idxmax()]
-    df_ba = df_ba.loc[df_ba.groupby('qseqid')['pident'].idxmax()]
+    
+    df_ab = df_ab.sort_values(['qseqid', 'evalue', 'length'],
+                              ascending=[True, True, False])
+    df_ab = df_ab.drop_duplicates(subset='qseqid', keep='first')
+
+    df_ba = df_ba.sort_values(['qseqid', 'evalue', 'length'],
+                              ascending=[True, True, False])
+    df_ba = df_ba.drop_duplicates(subset='qseqid', keep='first')
 
     df_concat = pd.concat([df_ab, df_ba], axis=0)
     divergence1 = df_concat['pident'].mean().round(3)
