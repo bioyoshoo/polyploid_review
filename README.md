@@ -26,24 +26,19 @@
 3. Calculate sequence identity (sequence divergence) based on blast output
     * **Note!!**
         Even if you consider only best hit specifying ```max_target_seqs = 1```, multiple result of the same query are included in the blast output. This is because the different regions in one best hit pair of query and subject sequence are included in the final output.
-        * So, only select the record of max identity score for representing each query.
+        * So, only select the record of lowest evalue record for representing each query.
         
             ```
-            df_ab = df_ab.loc[df_ab.groupby('qseqid')['pident'].idxmax()]
-            df_ba = df_ba.loc[df_ba.groupby('qseqid')['pident'].idxmax()]
+            df_ab = df_ab.sort_values(['qseqid', 'evalue', 'length'], ascending=[True, True, False])
+            df_ab = df_ab.drop_duplicates(subset='qseqid', keep='first')
             ```
     * 2 types of identity calculation method
+        * both methods are basically match length weighted mean of identity score.
         1. average of all blast best hit of both direction blast search (based on [Akama et al., 2014](https://academic.oup.com/nar/article/42/6/e46/2437554))
-
         2. average of identity scores of only **reciprocal blast hit**.
 
 ### Result
 * Nucleotide level comparison
 > Mean identity between camara and crivularis:
->  1. Average of all best hits: 98.189 -> **divergence 1.811 %**
->  2. Average of reciprocal best hits: 98.208 -> **divergence 1.792 %**
-
-* Amino acid level comparison
-> Mean identity between camara and crivularis:
->  1. Average of all best hits: 98.736 -> **divergence 1.264 %**
->  2. Average of reciprocal best hits: 98.78 -> **divergence 1.220 %**
+>  - Average of all best hits: 97.812 -> **divergence 2.188 %**
+>  - Average of reciprocal best hits: 97.825 -> **divergence 2.175 %**
